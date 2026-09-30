@@ -1,0 +1,985 @@
+/* =========================================
+   GLOBAL
+========================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+        "Noto Sans Bengali",
+        "Noto Serif Bengali",
+        "SolaimanLipi",
+        "Siyam Rupali",
+        Arial,
+        sans-serif;
+
+    background: #f2f2f2;
+    color: #333333;
+}
+
+
+/* =========================================
+   FORM PAGE
+========================================= */
+
+.form-page {
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.form-container {
+    width: min(900px, 100%);
+    margin: 0 auto;
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.10);
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   FORM HEADER
+========================================= */
+
+.form-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    padding: 28px 35px;
+
+    background: #333333;
+    color: white;
+}
+
+.header-logo {
+    width: 180px;
+    height: 180px;
+
+    background: white;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 7px;
+
+    flex-shrink: 0;
+}
+
+.header-logo img {
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+    border-radius: %;
+}
+
+.form-header h1 {
+    font-size: 27px;
+    margin-bottom: 5px;
+}
+
+.form-header p {
+    font-size: 15px;
+    opacity: 0.88;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+#coverForm {
+    padding: 30px;
+}
+
+.form-section {
+    margin-bottom: 30px;
+
+    padding: 25px;
+
+    border: 1px solid #dddddd;
+    border-radius: 14px;
+
+    background: #fbfbfb;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 22px;
+
+    color: #333333;
+}
+
+.section-title span {
+    font-size: 22px;
+}
+
+.section-title h2 {
+    font-size: 20px;
+}
+
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.input-group label {
+    font-size: 14px;
+    font-weight: 700;
+
+    color: #444444;
+}
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+
+    padding: 12px 14px;
+
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+
+    outline: none;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    background: white;
+
+    transition: 0.2s;
+}
+
+.input-group textarea {
+    resize: vertical;
+    min-height: 85px;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+    border-color: #c99728;
+
+    box-shadow:
+        0 0 0 3px rgba(201, 151, 40, 0.10);
+}
+
+
+/* =========================================
+   GENERATE BUTTON
+========================================= */
+
+.generate-btn {
+    width: 100%;
+
+    border: none;
+    border-radius: 10px;
+
+    padding: 16px;
+
+    background: #333333;
+    color: white;
+
+    font-family: inherit;
+    font-size: 17px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.generate-btn:hover {
+    background: #222222;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.20);
+}
+
+
+/* =========================================
+   PREVIEW AREA
+========================================= */
+
+.preview-area {
+    display: none;
+
+    min-height: 100vh;
+
+    padding: 25px;
+
+    background: #e8e8e8;
+}
+
+
+/* =========================================
+   TOOLBAR
+========================================= */
+
+.preview-toolbar {
+    width: min(1000px, 100%);
+
+    margin: 0 auto 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+.toolbar-right {
+    display: flex;
+    gap: 10px;
+}
+
+.toolbar-btn {
+    border: none;
+    border-radius: 8px;
+
+    padding: 11px 17px;
+
+    font-family: inherit;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.back-btn {
+    background: white;
+    color: #333333;
+}
+
+.print-btn {
+    background: #c99728;
+    color: white;
+}
+
+.download-btn {
+    background: #333333;
+    color: white;
+}
+
+.toolbar-btn:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.12);
+}
+
+.toolbar-btn:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+
+/* =========================================
+   A4 COVER
+========================================= */
+
+.cover-page {
+    position: relative;
+
+    width: 794px;
+    height: 1123px;
+
+    margin: 0 auto;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.18);
+}
+
+
+/* =========================================
+   BORDERS
+========================================= */
+
+.outer-border {
+    position: absolute;
+
+    inset: 22px;
+
+    border: 2px solid #333333;
+
+    pointer-events: none;
+
+    z-index: 5;
+}
+
+.inner-border {
+    position: absolute;
+
+    inset: 29px;
+
+    border: 1px solid #c99728;
+
+    pointer-events: none;
+
+    z-index: 5;
+}
+
+
+/* =========================================
+   CORNER TRIANGLES
+========================================= */
+
+.corner {
+    position: absolute;
+    width: 0;
+    height: 0;
+    z-index: 1;
+    overflow: visible;
+    background: transparent;
+}
+
+.corner-top-left {
+    left: 0;
+    top: 0;
+
+    border-top: 150px solid #333333;
+    border-right: 150px solid transparent;
+}
+
+.corner-bottom-right {
+    right: 0;
+    bottom: 0;
+
+    border-bottom: 150px solid #333333;
+    border-left: 150px solid transparent;
+}
+
+
+/* Gold diagonal stripe */
+
+.corner span {
+    position: absolute;
+
+    width: 125px;
+    height: 11px;
+
+    background: #c99728;
+
+    display: block;
+}
+
+.corner-top-left span {
+    left: -13px;
+    top: 62px;
+
+    transform: rotate(-45deg);
+}
+
+.corner-bottom-right span {
+    right: -13px;
+    bottom: 62px;
+
+    transform: rotate(-45deg);
+}
+
+
+/* =========================================
+   LEAF DECORATION
+========================================= */
+
+.leaf-decoration {
+    position: absolute;
+
+    color: rgba(51, 51, 51, 0.12);
+
+    font-family: Georgia, serif;
+
+    font-size: 105px;
+
+    z-index: 1;
+
+    line-height: 1;
+}
+
+.leaf-top-right {
+    right: 55px;
+    top: 40px;
+
+    transform: rotate(25deg);
+}
+
+.leaf-bottom-left {
+    left: 45px;
+    bottom: 40px;
+
+    transform: rotate(205deg);
+}
+
+
+/* =========================================
+   COVER CONTENT
+========================================= */
+
+.cover-content {
+    position: relative;
+
+    z-index: 10;
+
+    width: 100%;
+    height: 100%;
+
+    padding:
+        58px
+        67px
+        50px
+        67px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.university-logo-area {
+    height: 190px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 5px;
+}
+
+.university-logo-area img {
+    width: 195px;
+    height: 195px;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+
+/* =========================================
+   UNIVERSITY NAME
+========================================= */
+
+.university-name {
+    text-align: center;
+
+    color: #333333;
+
+    font-size: 38px;
+    font-weight: 800;
+
+    line-height: 1.25;
+
+    margin-top: 5px;
+}
+
+.department-name {
+    text-align: center;
+
+    color: #555555;
+
+    font-size: 30px;
+    font-weight: 700;
+
+    margin-top: 5px;
+}
+
+
+/* =========================================
+   GOLD DIVIDER
+========================================= */
+
+.gold-divider {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 18px 0 12px;
+}
+
+.gold-divider span {
+    flex: 1;
+
+    height: 2px;
+
+    background: #c99728;
+}
+
+.divider-leaf {
+    color: #c99728;
+
+    font-size: 25px;
+
+    line-height: 1;
+}
+
+
+/* =========================================
+   ASSIGNMENT HEADING
+========================================= */
+
+.assignment-heading {
+    text-align: center;
+
+    color: #333333;
+
+    font-size: 27px;
+    font-weight: 800;
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================================
+   COURSE INFORMATION
+========================================= */
+
+.course-information {
+    padding: 0 18px;
+}
+
+.course-row {
+    display: grid;
+
+    grid-template-columns:
+        190px
+        25px
+        1fr;
+
+    align-items: start;
+
+    margin-bottom: 9px;
+
+    font-size: 18px;
+
+    line-height: 1.5;
+}
+
+.course-label {
+    color: #444444;
+
+    font-weight: 700;
+}
+
+.course-colon {
+    color: #333333;
+
+    font-weight: 800;
+}
+
+.course-value {
+    color: #333333;
+
+    font-weight: 600;
+
+    word-break: break-word;
+}
+
+.assignment-row {
+    margin-bottom: 0;
+}
+
+
+/* =========================================
+   MAIN DIVIDER
+========================================= */
+
+.main-divider {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 21px 0 20px;
+}
+
+.main-divider span {
+    flex: 1;
+
+    height: 3px;
+
+    background: #333333;
+}
+
+.main-divider div {
+    color: #c99728;
+
+    font-size: 28px;
+}
+
+
+/* =========================================
+   PEOPLE SECTION
+========================================= */
+
+.people-section {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        2px
+        1fr;
+
+    gap: 24px;
+
+    margin-top: 2px;
+}
+
+.people-divider {
+    width: 2px;
+
+    background: #c99728;
+
+    min-height: 220px;
+
+    opacity: 0.75;
+}
+
+
+/* =========================================
+   PERSON HEADING
+========================================= */
+
+.person-heading {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: fit-content;
+
+    min-width: 105px;
+
+    min-height: 36px;
+
+    padding: 6px 14px;
+
+    border-radius: 20px;
+
+    background: #333333;
+
+    color: #ffffff;
+
+    font-family:
+        "Noto Sans Bengali",
+        "Noto Serif Bengali",
+        "SolaimanLipi",
+        "Siyam Rupali",
+        Arial,
+        sans-serif;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    margin-bottom: 13px;
+
+    white-space: nowrap;
+
+    position: relative;
+    z-index: 20;
+}
+
+.person-heading span:last-child {
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/* =========================================
+   PERSON INFORMATION
+========================================= */
+
+.person-info {
+    padding-left: 5px;
+}
+
+.person-name {
+    color: #333333;
+
+    font-size:  22px;
+    font-weight: 800;
+
+    line-height: 1.35;
+
+    margin-bottom: 6px;
+}
+
+.person-designation {
+    color: #b58a25;
+
+    font-size: 18px;
+    font-weight: 700;
+
+    margin-bottom: 8px;
+}
+
+.person-line {
+    color: #333333;
+
+    font-size:  16px;
+    font-weight: 600;
+
+    line-height: 1.45;
+
+    margin-bottom: 4px;
+}
+
+.address-line {
+    color: #333333;
+
+    margin-top: 4px;
+}
+
+
+/* =========================================
+   SUBMISSION DATE
+========================================= */
+
+.submission-date {
+    align-self: center;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    margin-top: auto;
+    margin-bottom: 10px;
+
+    padding: 9px 18px;
+
+    border: 1px solid #c99728;
+
+    border-radius: 20px;
+
+    background: rgba(201, 151, 40, 0.08);
+
+    color: #444444;
+
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.submission-date strong {
+    color: #333333;
+
+    font-size:18px;
+}
+
+
+/* =========================================
+   PRINT
+========================================= */
+
+@page {
+    size: A4 portrait;
+    margin: 0;
+}
+
+@media print {
+
+    html,
+    body {
+        width: 210mm;
+        height: 297mm;
+
+        margin: 0;
+        padding: 0;
+
+        background: white;
+    }
+
+    body * {
+        visibility: hidden !important;
+    }
+
+    #previewArea {
+        display: block !important;
+
+        position: static !important;
+
+        padding: 0 !important;
+
+        background: white !important;
+
+        min-height: 0 !important;
+    }
+
+    #coverPage,
+    #coverPage * {
+        visibility: visible !important;
+    }
+
+    #coverPage {
+        position: absolute !important;
+
+        left: 0 !important;
+        top: 0 !important;
+
+        width: 210mm !important;
+        height: 297mm !important;
+
+        margin: 0 !important;
+
+        box-shadow: none !important;
+
+        transform: none !important;
+    }
+
+    .preview-toolbar {
+        display: none !important;
+    }
+}
+
+
+/* =========================================
+   RESPONSIVE FORM
+========================================= */
+
+@media (max-width: 700px) {
+
+    .form-page {
+        padding: 15px;
+    }
+
+    .form-header {
+        padding: 22px;
+
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+    .form-header h1 {
+        font-size: 23px;
+    }
+
+    #coverForm {
+        padding: 18px;
+    }
+
+    .form-section {
+        padding: 18px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .full-width {
+        grid-column: auto;
+    }
+
+    .preview-area {
+        padding: 10px;
+    }
+
+    .preview-toolbar {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .toolbar-right {
+        width: 100%;
+    }
+
+    .toolbar-btn {
+        flex: 1;
+    }
+
+    .cover-page {
+        transform-origin: top center;
+
+        transform: scale(
+            min(
+                1,
+                calc((100vw - 20px) / 794)
+            )
+        );
+
+        margin-bottom:
+            calc(
+                -1123px +
+                (1123px * min(
+                    1,
+                    calc((100vw - 20px) / 794)
+                ))
+            );
+    }
+}
+
+
+/* =========================================
+   VERY SMALL SCREEN
+========================================= */
+
+@media (max-width: 430px) {
+
+    .toolbar-right {
+        flex-direction: column;
+    }
+
+    .university-name {
+        font-size: 32px;
+    }
+
+    .department-name {
+        font-size: 21px;
+    }
+
+}

@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Assignment Cover Generator</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- PDF Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+
+    <!-- FORM PAGE -->
+    <section id="formPage" class="form-page">
+
+        <div class="form-container">
+
+            <div class="form-header">
+
+                <div class="header-logo">
+                    <img src="jnulogo.png" alt="Jagannath University Logo">
+                </div>
+
+                <div>
+                    <h1>Assignment Cover Generator</h1>
+                    <p>Department of Bangla, Jagannath University</p>
+                </div>
+
+            </div>
+
+
+            <form id="coverForm">
+
+                <!-- COURSE INFORMATION -->
+                <div class="form-section">
+
+                    <div class="section-title">
+                        <span>📚</span>
+                        <h2>কোর্সের তথ্য</h2>
+                    </div>
+
+                    <div class="form-grid">
+
+                        <div class="input-group">
+                            <label for="courseNumber">কোর্স নম্বর</label>
+
+                            <input
+                                type="text"
+                                id="courseNumber"
+                                placeholder="যেমন: বাং-৩১০৫"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="input-group">
+                            <label for="submissionDate">জমাদানের তারিখ</label>
+
+                            <input
+                                type="date"
+                                id="submissionDate"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="input-group full-width">
+                            <label for="courseTitle">কোর্স শিরোনাম</label>
+
+                            <input
+                                type="text"
+                                id="courseTitle"
+                                placeholder="কোর্সের নাম লিখুন"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="input-group full-width">
+                            <label for="assignmentTitle">অ্যাসাইনমেন্টের শিরোনাম</label>
+
+                            <textarea
+                                id="assignmentTitle"
+                                rows="3"
+                                placeholder="অ্যাসাইনমেন্টের শিরোনাম লিখুন"
+                                required
+                            ></textarea>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- TEACHER INFORMATION -->
+                <div class="form-section">
+
+                    <div class="section-title">
+                        <span>👨‍🏫</span>
+                        <h2>শিক্ষকের তথ্য</h2>
+                    </div>
+
+                    <div class="form-grid">
+
+                        <div class="input-group">
+                            <label for="teacherName">শিক্ষকের নাম</label>
+
+                            <input
+                                type="text"
+                                id="teacherName"
+                                placeholder="কোর্স শিক্ষকের নাম"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="input-group">
+                            <label for="teacherDesignation">পদবী</label>
+
+                            <input
+                                type="text"
+                                id="teacherDesignation"
+                                placeholder="যেমন: অধ্যাপক"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="input-group">
+                            <label for="teacherDepartment">বিভাগ</label>
+
+                            <input
+                                type="text"
+                                id="teacherDepartment"
+                                value="বাংলা বিভাগ"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="input-group">
+                            <label for="teacherUniversity">বিশ্ববিদ্যালয়</label>
+
+                            <input
+                                type="text"
+                                id="teacherUniversity"
+                                value="জগন্নাথ বিশ্ববিদ্যালয়"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="input-group full-width">
+                            <label for="teacherAddress">ঠিকানা</label>
+
+                            <input
+                                type="text"
+                                id="teacherAddress"
+                                value="ঢাকা-১১০০, বাংলাদেশ"
+                                required
+                            >
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- STUDENT INFORMATION -->
+                <div class="form-section">
+
+                    <div class="section-title">
+                        <span>🎓</span>
+                        <h2>শিক্ষার্থীর তথ্য</h2>
+                    </div>
+
+                    <div class="form-grid">
+
+                        <div class="input-group">
+                            <label for="studentName">শিক্ষার্থীর নাম</label>
+
+                            <input
+                                type="text"
+                                id="studentName"
+                                placeholder=" মোঃ রবিউল হাসান"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="input-group">
+                            <label for="studentBatch">আবর্তন</label>
+
+                            <input
+                                type="text"
+                                id="studentBatch"
+                                placeholder="যেমন: ২০তম আবর্তন"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="input-group">
+                            <label for="studentYear">বর্ষ ও সেমিস্টার</label>
+
+                            <input
+                                type="text"
+                                id="studentYear"
+                                placeholder="যেমন: ২য় বর্ষ, ২য় সেমিস্টার"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="input-group">
+                            <label for="studentId">আইডি</label>
+
+                            <input
+                                type="text"
+                                id="studentId"
+                                placeholder="শিক্ষার্থী আইডি"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="input-group">
+                            <label for="studentDepartment">বিভাগ</label>
+
+                            <input
+                                type="text"
+                                id="studentDepartment"
+                                value="বাংলা বিভাগ"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="input-group">
+                            <label for="studentUniversity">বিশ্ববিদ্যালয়</label>
+
+                            <input
+                                type="text"
+                                id="studentUniversity"
+                                value="জগন্নাথ বিশ্ববিদ্যালয়"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="input-group full-width">
+                            <label for="studentAddress">ঠিকানা</label>
+
+                            <input
+                                type="text"
+                                id="studentAddress"
+                                value="ঢাকা-১১০০, বাংলাদেশ"
+                                required
+                            >
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- GENERATE BUTTON -->
+                <button type="submit" class="generate-btn">
+                   
+                    কভার পেজ তৈরি করুন
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- PREVIEW PAGE -->
+    <section id="previewArea" class="preview-area">
+
+        <div class="preview-toolbar">
+
+            <button
+                type="button"
+                id="backBtn"
+                class="toolbar-btn back-btn"
+            >
+                ← আবার তথ্য দিন
+            </button>
+
+
+            <div class="toolbar-right">
+
+                <button
+                    type="button"
+                    id="printBtn"
+                    class="toolbar-btn print-btn"
+                >
+                    🖨️ Print
+                </button>
+
+
+                <button
+                    type="button"
+                    id="downloadBtn"
+                    class="toolbar-btn download-btn"
+                >
+                    ⬇️ PDF Download
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- A4 COVER PAGE -->
+        <div id="coverPage" class="cover-page">
+
+            <!-- Corner Decorations -->
+
+            <div class="corner corner-top-left">
+                <span></span>
+            </div>
+
+
+            <div class="corner corner-bottom-right">
+                <span></span>
+            </div>
+
+
+            <!-- Leaf Decorations -->
+
+            <div class="leaf-decoration leaf-top-right">
+                ❧
+            </div>
+
+
+            <div class="leaf-decoration leaf-bottom-left">
+                ❧
+            </div>
+
+
+            <!-- Borders -->
+
+            <div class="outer-border"></div>
+            <div class="inner-border"></div>
+
+
+
+            <!-- COVER CONTENT -->
+
+            <div class="cover-content">
+
+                <!-- UNIVERSITY LOGO -->
+
+                <div class="university-logo-area">
+
+                    <img
+                        id="coverLogo"
+                        src="jnulogo.png"
+                        alt="Jagannath University Logo"
+                    >
+
+                </div>
+
+
+
+                <!-- UNIVERSITY NAME -->
+
+                <div class="university-name">
+                    জগন্নাথ বিশ্ববিদ্যালয়
+                </div>
+
+
+                <div class="department-name">
+                    বাংলা বিভাগ
+                </div>
+
+
+
+                <!-- GOLD DIVIDER -->
+
+                <div class="gold-divider">
+
+                    <span></span>
+
+                    <div class="divider-leaf">
+                        ❧
+                    </div>
+
+                    <span></span>
+
+                </div>
+
+
+
+                <!-- ASSIGNMENT TITLE -->
+
+                <div class="assignment-heading">
+                    অ্যাসাইনমেন্ট
+                </div>
+
+
+
+                <!-- COURSE INFORMATION -->
+
+                <div class="course-information">
+
+                    <div class="course-row">
+
+                        <div class="course-label">
+                            কোর্স নম্বর
+                        </div>
+
+                        <div class="course-colon">
+                            :
+                        </div>
+
+                        <div
+                            class="course-value"
+                            id="outCourseNumber"
+                        ></div>
+
+                    </div>
+
+
+                    <div class="course-row">
+
+                        <div class="course-label">
+                            কোর্স শিরোনাম
+                        </div>
+
+                        <div class="course-colon">
+                            :
+                        </div>
+
+                        <div
+                            class="course-value"
+                            id="outCourseTitle"
+                        ></div>
+
+                    </div>
+
+
+                    <div class="course-row assignment-row">
+
+                        <div class="course-label">
+                            অ্যাসাইনমেন্টের শিরোনাম
+                        </div>
+
+                        <div class="course-colon">
+                            :
+                        </div>
+
+                        <div
+                            class="course-value"
+                            id="outAssignmentTitle"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- MAIN DIVIDER -->
+
+                <div class="main-divider">
+
+                    <span></span>
+
+                    <div>
+                        ❧
+                    </div>
+
+                    <span></span>
+
+                </div>
+
+
+
+                <!-- TEACHER & STUDENT -->
+
+                <div class="people-section">
+
+                    <!-- TEACHER -->
+
+                    <div class="person-column teacher-column">
+
+                        <div class="person-heading">
+                            <span>নির্দেশনায়</span>
+                        </div>
+
+
+                        <div class="person-info">
+
+                            <div
+                                class="person-name"
+                                id="outTeacherName"
+                            ></div>
+
+
+                            <div
+                                class="person-designation"
+                                id="outTeacherDesignation"
+                            ></div>
+
+
+                            <div
+                                class="person-line"
+                                id="outTeacherDepartment"
+                            ></div>
+
+
+                            <div
+                                class="person-line"
+                                id="outTeacherUniversity"
+                            ></div>
+
+
+                            <div
+                                class="person-line address-line"
+                                id="outTeacherAddress"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- VERTICAL DIVIDER -->
+
+                    <div class="people-divider"></div>
+
+
+
+                    <!-- STUDENT -->
+
+                    <div class="person-column student-column">
+
+                        <div class="person-heading">
+                            <span>উপস্থাপনায়</span>
+                        </div>
+
+
+                        <div class="person-info">
+
+                            <div
+                                class="person-name"
+                                id="outStudentName"
+                            ></div>
+
+
+                            <div
+                                class="person-line"
+                                id="outStudentBatch"
+                            ></div>
+
+
+                            <div
+                                class="person-line"
+                                id="outStudentYear"
+                            ></div>
+
+
+                            <div
+                                class="person-line"
+                                id="outStudentId"
+                            ></div>
+
+
+                            <div
+                                class="person-line"
+                                id="outStudentDepartment"
+                            ></div>
+
+
+                            <div
+                                class="person-line"
+                                id="outStudentUniversity"
+                            ></div>
+
+
+                            <div
+                                class="person-line address-line"
+                                id="outStudentAddress"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- SUBMISSION DATE -->
+
+                <div class="submission-date">
+
+                    <span>
+                        জমাদানের তারিখ:
+                    </span>
+
+                    <strong id="outDate"></strong>
+
+                  
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
